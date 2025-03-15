@@ -6,23 +6,22 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "the-setup-wizard",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Use:   "wizard",
+	Short: "A Terminal User Interface to centralize setup scripts and streamline installations.",
+	Long: `Wizard is a setup wizard Terminal User Interface (TUI) application designed to simplify and centralize setup 
+or installation scripts. It provides an easy-to-use menu system, powered by Charm Bracelet's Bubble Tea TUI platform,
+allowing users to organize and manage scripts all in one place.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+With The Setup Wizard, users can:
+- Copy and paste shell or programming scripts into its cloud-based database.
+- Save these scripts for easy reuse.
+- Run any selected script based on their setup or installation requirements.
+
+This tool is perfect for developers and system administrators looking to optimize script execution and management in
+a clean, menu-driven terminal interface.`,
 }
 
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
@@ -31,13 +30,5 @@ func Execute() {
 }
 
 func init() {
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.the-setup-wizard.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
