@@ -32,7 +32,7 @@ a clean, menu-driven terminal interface.`,
 		defer db.CloseDB(database)
 
 		// Run the TUI application
-		err = tui.RunTeaApp()
+		err = tui.RunWizardTeaApp()
 		if err != nil {
 			fmt.Printf("Error running TUI: %v\n", err)
 			os.Exit(1)
