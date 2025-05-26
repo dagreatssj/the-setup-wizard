@@ -1,8 +1,11 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
 
+	"github.com/dagreatssj/the-setup-wizard/internal/db"
+	"github.com/dagreatssj/the-setup-wizard/internal/tui"
 	"github.com/spf13/cobra"
 )
 
@@ -20,6 +23,21 @@ With The Setup Wizard, users can:
 
 This tool is perfect for developers and system administrators looking to optimize script execution and management in
 a clean, menu-driven terminal interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		database, err := db.InitSqliteDB()
+		if err != nil {
+			fmt.Printf("Error initializing database: %v\n", err)
+			os.Exit(1)
+		}
+		defer db.CloseDB(database)
+
+		// Run the TUI application
+		err = tui.RunTeaApp()
+		if err != nil {
+			fmt.Printf("Error running TUI: %v\n", err)
+			os.Exit(1)
+		}
+	},
 }
 
 func Execute() {
