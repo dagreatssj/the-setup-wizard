@@ -24,8 +24,8 @@ func updateDatabaseSelection(msg tea.Msg, m model) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 		case "j", "down":
 			m.dbChoice++
-			if m.dbChoice > 3 {
-				m.dbChoice = 3
+			if m.dbChoice > 1 {
+				m.dbChoice = 1
 			}
 		case "k", "up":
 			m.dbChoice--
